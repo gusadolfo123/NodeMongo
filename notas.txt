@@ -1,0 +1,24 @@
+
+npm init --yes
+
+modulos tanto para el front comom para el backend
+
+express-handlebars -> motor de plantillas
+express-session -> crear sessiones dentro del server cuando el usuario se autentica
+method-override -> para extender funcionalidad de formularios para que no solo use POST
+passport -> para authenticacion
+bcryptjs -> aplica algoritmo a textos para convertirlo en hash de manera que la contraseña sea cifrada
+connect-flash -> para enviar mensajes de validacion entre vistas
+
+npm i express express-handlebars express-session method-override mongoose passport passport-local bcryptjs connect-flash 
+npm nodemon -D
+
+crear carpetas del proyecto dentro de src
+
+mkdir config,helpers,models,public,routes,views 
+
+se realiza configuracion correspondiente de settings, middlewares, routes y mongoose
+
+
+
+
