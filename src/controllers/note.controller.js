@@ -39,13 +39,18 @@ noteCtrl.editNote = async (req, res) => {
     res.render('notes/edit-note', { note });
 };
 
-
 noteCtrl.updateNote = async (req, res) => {
     const { id } = req.params;
-    const note = 
-    await Note.findByIdAndUpdate(id, {$set: note}, {new: true});
+    const { title, description } = req.body;
+    await Note.findByIdAndUpdate(id, { title, description }, {new: true});
 
-     res.redirect('/');
+    res.redirect('/notes');
+};
+
+noteCtrl.deleteNote = async (req, res) => {
+    const { id } = req.params;
+    await Note.findByIdAndDelete(id);
+    res.redirect('/notes');
 };
 
 module.exports = noteCtrl;
