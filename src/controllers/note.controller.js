@@ -29,6 +29,9 @@ noteCtrl.createNote = async (req, res) => {
         const newNote = new Note({ title, description });
         await newNote.save();
 
+        // uso de flash para enviar mensajes
+        req.flash('success_msg', 'Note Added Successfully');
+
         res.redirect('/notes');
     }
     
@@ -43,6 +46,9 @@ noteCtrl.updateNote = async (req, res) => {
     const { id } = req.params;
     const { title, description } = req.body;
     await Note.findByIdAndUpdate(id, { title, description }, {new: true});
+    
+    // uso de flash para enviar mensajes
+    req.flash('success_msg', 'Note Updated Successfully');
 
     res.redirect('/notes');
 };
@@ -50,6 +56,10 @@ noteCtrl.updateNote = async (req, res) => {
 noteCtrl.deleteNote = async (req, res) => {
     const { id } = req.params;
     await Note.findByIdAndDelete(id);
+    
+    // uso de flash para enviar mensajes
+    req.flash('success_msg', 'Note deleted Successfully');
+
     res.redirect('/notes');
 };
 
