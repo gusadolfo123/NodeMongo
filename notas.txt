@@ -19,6 +19,6 @@ mkdir config,helpers,models,public,routes,views
 
 se realiza configuracion correspondiente de settings, middlewares, routes y mongoose
 
-
+los archivos estaticos iran en public
 
 

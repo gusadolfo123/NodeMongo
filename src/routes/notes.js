@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const notesController = require('../controllers/note.controller');
 
-router.get('/notes', (req, res) => {
-    res.send('Notas desde la base de datos');
-});
 
-router.post('/notes', (req, res) => {
-    res.send('Formulario de Autenticacion');
+//ver formulario
+router.get('/notes/add', (req, res) => {
+    res.render('notes/new-note');
 });
+router.get('/notes', notesController.getNotes);
+router.post('/notes/new-note', notesController.createNote);
+router.get('/notes/edit/:id', notesController.editNote);
+router.put('/notes/edit-note/:id', notesController.updateNote);
 
 
 
