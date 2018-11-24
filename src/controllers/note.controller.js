@@ -2,7 +2,7 @@ const Note = require('../models/Note');
 const noteCtrl = {};
 
 noteCtrl.getNotes = async (req, res) => {
-    const notes = await Note.find().sort({ date: 'desc' });
+    const notes = await Note.find({ user: req.user.id }).sort({ date: 'desc' });
     res.render('notes/all-notes', { notes });
 };
 
@@ -26,7 +26,8 @@ noteCtrl.createNote = async (req, res) => {
             description
         });
     }else{
-        const newNote = new Note({ title, description });
+        const newNote = new Note({ title, description, });
+        newNote.user = req.user.id;
         await newNote.save();
 
         // uso de flash para enviar mensajes
